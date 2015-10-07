@@ -1,6 +1,6 @@
 <html>
 <head>
-<!-- 
+<!--
   THE PURPOSE OF THIS EXAMPLE IS TO SHOW TWO THINGS:
   a) The order in which js scripts are run and pages are rendered
   b) understand local and global variables in js
@@ -22,16 +22,17 @@
 
 <script src="js/test0.js"> </script>
 
-<script> 
+<script>
 // TODO: IT IS FUN TO TRY TO MAKE A LIST OF WHAT WILL GET SHOWN ON
 // SCREEN AND IN WHAT ORDER. FIGURE OUT WHAT IS HAPPENING.
+// SEE README.txt for explanation*********************************
 
 console.log(i++," In head element");
 
 // We are adding an event listener for the READY event here
 // We will learn (later) other ways to add such listeners
 document.addEventListener('DOMContentLoaded', function () {
-  console.log(i++, " document is now ready", new Date().getTime()); 
+  console.log(i++, " document is now ready", new Date().getTime());
 });
 
 </script>
@@ -41,32 +42,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
 Hello 1!
 
-<script> 
+<script>
 console.log(i++, " in script1 in body");
 
 // This gets hoisted
 function test(s) {
-  console.log (i++, s, new Date().getTime()); 
+  console.log (i++, s, new Date().getTime());
 } // end of test method
 
 </script>
 
 Hello 2!
 
-<script> 
+<script>
   console.log (i++, " in script2 in body");
 </script>
 
-<script src="js/test0.js"> </script-->
+<script src="js/test0.js"> </script>
 
 Hello 3!
 
 <!-- put some pictures test1.jpg etc that are several MBs -->
 <!-- that should make onload event fire much later than ready event -->
-<img src="test1.jpg">
-<img src="test2.jpg">
-<img src="test3.jpg">
-<img src="test4.jpg">
+<img src="test1.jpeg">
+<img src="test2.jpeg">
+<img src="test3.jpeg">
+<img src="test4.jpeg">
 
 <script src="js/test0.js"> </script>
 
