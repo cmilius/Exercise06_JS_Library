@@ -18,22 +18,30 @@ Exercise06_JS_Library
     14. DOM has been fully loaded, so console display of "document is now ready"
     15. Load content into browser, so console display of "document has now been completely loaded"
 
+  EX 01 functions
+    Call uses comma separated arguments when used while apply uses an array containing the arguments when used
+    Bind assigns functions to event handlers
 
-  EX 01
+  EX 02 json
+    5. JSON.stringify(testObj); creates a JavaScript string based on a JS object
+    6. JSON.parse(text); creates a JS object based on a JSON formatted string
 
-  EX 02
+  EX 03 jquery
+    
 
-  EX 03
+  EX 03 jquery2
 
-  EX 04
+  EX 03 jquery3
 
-  EX 05
+  EX 04 objs
 
-  EX 06
+  EX 05 obj_Factory
 
-  EX 07
+  EX 06 obj_Constructor
 
-  EX 08
+  EX 07 obj_prototype
+
+  EX 08 obj_consProto
 
 02_JQuery
 

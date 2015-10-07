@@ -4,16 +4,16 @@
 
 
 <script>
-<!-- I will talk about call/bind/apply later in class -->
-<!-- we skipped that! -->
+//<!-- I will talk about call/bind/apply later in class -->
+//<!-- we skipped that! -->
 
 // REMAINING information about functions ---
 
 // 1. self-invoke a function IIFE
 (function (x, y) {console.log ("self-invoke: " + (x+y));})(100,200);
 
-// in the above example, we had an anonymous function being called 
-// right away. x gets 100 and y gets 200. 
+// in the above example, we had an anonymous function being called
+// right away. x gets 100 and y gets 200.
 
 
 
@@ -22,7 +22,7 @@
 // Understanding "this" and apply,call,and bind
 // -----------------------------------------
 // Functions are objects. They have a Call, Apply, and Bind method
-// You can ask it to use a "this" TEMPORARILY using Call and Apply. 
+// You can ask it to use a "this" TEMPORARILY using Call and Apply.
 // Only difference is in how they expect arguments
 // Call  uses commas to separate arguments
 // Apply just uses an array
@@ -68,12 +68,12 @@ user.clickHandler("directly: calling user ");
 // being sent. In one case as comma-separated arguments and in the other
 // case as an array containing the arguments.
 // Note that the "this" is TEMPORARILY "user2" here.
-user.clickHandler.call(user2, "call: user2 "); 
+user.clickHandler.call(user2, "call: user2 ");
 user.clickHandler.apply(user2,["apply: user2 "]);
 
 
 // 4. Here is an example of how bind is used.
-// The foo2 is a function that has user2 bound permanently to 
+// The foo2 is a function that has user2 bound permanently to
 // the user.clickHandler function.
 // Binding is often useful when assigning functions to event handlers.
 var foo2 = user.clickHandler.bind(user2);
@@ -81,12 +81,12 @@ foo2("using bind: calling user's clickHandler but expecting user2 ");
 
 
 // In this case, even though call is trying to set this for foo2 call to
-// user - it maintains binding with user2. 
+// user - it maintains binding with user2.
 foo2.call(user, "using bind: calling user but expecting user2 ");
 
 
 // 5. Here an event handler is assigned to paragraph with id p1.
-// However, the goal is not met as the handler code actually uses 
+// However, the goal is not met as the handler code actually uses
 // the PARAGRAPH object as "this" // object during runtime.
 // <p id="p1"> How are you doing?  </p>
 // clicking this will just give an error
@@ -95,7 +95,7 @@ user.clickHandler(s);};})("clicked p1 "));
 // TRY IT OUT BY CLICKING P1!
 
 // 6. If we really wanted to have "user" as the this for the handler,
-// we can create a new function using bind that PERMANENTLY binds the 
+// we can create a new function using bind that PERMANENTLY binds the
 // handler code to the this object.
 // Binding is often useful when assigning functions to event handlers.
 // <p id="p2"> Very well, Thank you!  </p>
