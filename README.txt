@@ -27,7 +27,7 @@ Exercise06_JS_Library
     6. JSON.parse(text); creates a JS object based on a JSON formatted string
 
   EX 03 jquery
-    
+
 
   EX 03 jquery2
 
@@ -44,5 +44,19 @@ Exercise06_JS_Library
   EX 08 obj_consProto
 
 02_JQuery
+  EFFECTS
+    1. Html Element: id=btnHide Effect: Hides this button from the screen, then shows it again
+    2. Html Element: id=btnSlide  Effect: Hides button from screen with slide effect
+    3. Html Element: id=btnToggle Effect: Toggles the visibiliy of the first two buttons
+    4. Html Element: id=btnFade Effect: Fades this button out and back into visibility
+    5. Html Element: id=btnAnimate Effect: Animates this button by making it taller, wider, then shrinking it back again
+
+  EVENTS
+    1. Html Element: id=btnClick Event: When the button is clicked, hide it
+    2. Html Element: id=btnClick2 Event: When the button is double clicked, toggle btnClick's visibility
+    3. Html Element: id=btnEnter Event: When mouse enters the button, tell user with an alert
+    4. Html Element: id=btnLeave Event: When mouse leaves button, tell user with an alert
+    5. Html Element: btnFocus Event: When button has the focus, change it's background-color to red you
+      can test this by tabbing the focus through all the buttons
 
 03_Library

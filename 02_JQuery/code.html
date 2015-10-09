@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>2-JQuery</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="code.js"></script>
+  </head>
+
+  <body>
+    <!--EFFECTS-->
+    <h2>Effects</h2>
+    <!--Html Element: id=btnHide Effect: Hides this button from the screen, then shows it again-->
+    <button id="btnHide" onclick="hide()">Effect 1: Hide</button>
+
+    <!--Html Element: id=btnSlide  Effect: Hides button from screen with slide effect-->
+    <button id="btnSlide" onclick="slide()">Effect 2: Slide</button>
+
+    <!--Html Element: id=btnToggle Effect: Toggles the visibiliy of the first two buttons-->
+    <button id="bntToggle" onclick="toggle()">Effect 3: Toggle</button>
+
+    <!--Html Element: id=btnFade Effect: Fades this button out and back into visibility-->
+    <button id="btnFade" onclick="fade()">Effect 4: Fade</button>
+
+    <!--Html Element: id=btnAnimate Effect: Animates this button by making it taller, wider,
+      then shrinking it back again-->
+    <button id="btnAnimate" onclick="animation()">Effect 5: Animate</button>
+
+    <hr>
+
+    <!--EVENTS-->
+    <h2>Events</h2>
+    <!--Html Element: id=btnClick Event: When the button is clicked, hide it-->
+    <button id="btnClick">Event 1: Click</button>
+
+    <!--Html Element: id=btnClick2 Event: When the button is double clicked,
+      toggle btnClick's visibility-->
+    <button id="btnClick2">Event 2: Dbl Click</button>
+
+    <!--Html Element: id=btnEnter Event: When mouse enters the button, tell user with an alert-->
+    <button id="btnEnter">Event 3: Mouse Enter</button>
+
+    <!--Html Element: id=btnLeave Event: When mouse leaves button, tell user with an alert-->
+    <button id="btnLeave">Event 4: Mouse Leave</button>
+
+    <!--Html Element: btnFocus Event: When button has the focus, change it's background-color to red
+      you can test this by tabbing the focus through all the buttons-->
+    <button id="btnFocus">Event 5: Focus</button>
+
+  </body>
+</html>
