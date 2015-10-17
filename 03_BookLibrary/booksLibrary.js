@@ -1,24 +1,39 @@
+//creates the library object
 function Library(){
 	this.shelves = [];
 }
 
+//creates the shelf object
 function Shelf(){
 	this.books = [];
 }
 
+<<<<<<< HEAD
 function Book(name){
 	 this.name = name;
+=======
+//creates the book object
+function Book(){
+	this.name = [];
+>>>>>>> origin/master
 }
 
+//when the document is ready, make the table
 $(document).ready(function() {
 	createTable();
 });
 
+//creates the table of shelves and books
 function createTable() {
-    mytable = $("<table border='2'></table>"); // creates DOM elements
-    mytablebody = $('<tbody></tbody>'); 
+		//creates the table html DOM element
+    mytable = $("<table border='2'></table>");
+    mytablebody = $('<tbody></tbody>');
 
+<<<<<<< HEAD
 
+=======
+		//declare a new library and shelves
+>>>>>>> origin/master
     var library = new Library();
     var shelf1 = new Shelf();
     var shelf2 = new Shelf();
@@ -106,7 +121,10 @@ function createTable() {
     mytable.insertBefore($('#tablecreate')); // real dom from document!
 
 }
+<<<<<<< HEAD
 
 function displayBookInfo(){
     
 }
+=======
+>>>>>>> origin/master
