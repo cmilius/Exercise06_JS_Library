@@ -2,18 +2,6 @@
 function Library(name){
 	this.libraryName = name;
 	this.shelves = [];
-
-	this.removeUnavailable = function(){
-	//loop through shelves
-	for(var shlf=0;shlf<this.shelves.length;shlf++){
-		//loop through books
-		for(var bk=0;bk<this.shelves[shlf].books.length;bk++){
-			if(this.shelves[shlf].books[bk].available!=1){
-				this.shelves[shlf].books.splice(bk,1);
-			}
-		}
-	}
-}
 }
 
 //creates the shelf object
@@ -45,19 +33,6 @@ Library.prototype.getShelvesList = function(){
 	//return as an array of shelves
 	return shelvesList;
 }
-
-//remove all unavailable books from the library
-/*Library.prototype.removeUnavailable = function(){
-	//loop through shelves
-	for(var shlf=0;shlf<this.shelves.length;shlf++){
-		//loop through books
-		for(var bk=0;bk<this.shelves[shlf].books.length;bk++){
-			if(this.shelves[shlf].books[bk].available!=1){
-				this.shelves[shlf].books.splice(bk,1);
-			}
-		}
-	}
-}*/
 
 //adds the given shelf to the library
 Shelf.prototype.addShelfTo = function(library){
@@ -91,7 +66,7 @@ Book.prototype.isAvailableIn = function(library){
 
 	//if we make it here, we have to return unavailable
 	console.log("Could not find " + this.bookName);
-	var shelf = new Shelf();
+	var shelf = new Shelf("undefined");
 	return shelf;
 }
 
@@ -175,10 +150,6 @@ $(document).ready(function() {
 		var newShelf = new Shelf("Shelf " + i);
 		newShelf.addShelfTo(library);
 	}
-	//alert(library.shelves[0].shelfName + library.shelves[1].shelfName + library.shelves[2].shelfName);
-
-	var list = library.getShelvesList();
-	//alert(list[0].shelfName + list[1].shelfName + list[2].shelfName);
 
 	//add books to the shelves
 	//shelf 0
@@ -200,28 +171,41 @@ $(document).ready(function() {
 	}
 
 	//add an unavailable book
+	var newBook = new Book("Book 9","Book 9 Description",1);
+	newBook.addBookTo(library.shelves[0]);
+
 	var newBook = new Book("Book 10","Book 10 Description",1);
 	newBook.addBookTo(library.shelves[2]);
 
-	var newBook = new Book("Book 11111","Book 11 Description",0);
-	newBook.addBookTo(library.shelves[2]);
+	var newBook = new Book("Book 11","Book 11 Description",0);
+	newBook.addBookTo(library.shelves[0]);
 
-	var newBook = new Book("Book 11 D","DIFERENT BOOK 11",1);
+	var newBook = new Book("Book 11","DIFERENT BOOK 11",1);
 	newBook.addBookTo(library.shelves[2]);
 
 	//clones the library
-	var libAvailable = library.create();
-	//var libAvailable = JSON.parse(JSON.stringify(library));;
-	//var libAvailable = new Library();
-	//var libAvailable = jQuery.extend(false, {}, library);
-	//var libAvailable = library.constructor();
+	var libAvailable = JSON.parse(JSON.stringify(library));
 
-	//libAvailable.shelves[2].books.splice(4,1);
+	//remove unavailable books
+	libAvailable.removeUnavailable = function(){
+		//loop through shelves
+		for(var shlf=0;shlf<this.shelves.length;shlf++){
+			//loop through books
+			for(var bk=0;bk<this.shelves[shlf].books.length;bk++){
+				if(this.shelves[shlf].books[bk].available!=1){
+					this.shelves[shlf].books.splice(bk,1);
+				}
+			}
+		}
+	}
+
+	//remove unavailable books from the copy
 	libAvailable.removeUnavailable();
 
-	//create the table from the library and display
-	createTable(library).insertBefore($('#libraryTable'));
+	//create the table from the libAvailable and display
+	createTable(libAvailable).insertBefore($('#libraryTable'));
 
+	//whenever a user clicks on a data cell
 	$(document).on('click', 'td', function () {
 			//get variables
 			var string = $(this).html();
@@ -230,8 +214,37 @@ $(document).ready(function() {
 
 			//show user the book details if the book has a name
 			if(row>=0 && col>=0 && string!=" "){
-				alert(libAvailable.shelves[column].books[row].details);
+				alert(libAvailable.shelves[column].books[row].bookName + " details: " + libAvailable.shelves[column].books[row].details);
 			}
+	});
+
+	//search for book availablity
+	$(document).on('click', '#bookSearch', function () {
+			var bookName = document.getElementById('bookSearchTxt').value;
+			var bk = new Book(bookName,"NONE",0);
+			var retShelf = bk.isAvailableIn(library);
+			if(retShelf.shelfName != "undefined"){
+				alert("\"" + bk.bookName + "\"" + " is available in " + retShelf.shelfName);
+			}
+			else {
+				alert("\"" + bk.bookName + "\"" + " is not available in " + library.libraryName);
+			}
+
+	});
+
+	//show the user a list of all shevles in the library
+	$(document).on('click', '#getAllShelves', function () {
+
+			var shelves = library.getShelvesList();
+			var nameList = "Shelf List: ";
+
+			for(i=0;i<shelves.length-1;i++){
+				nameList += shelves[i].shelfName + ", ";
+			}
+			nameList += shelves[i].shelfName;
+
+			alert(nameList);
+
 	});
 
 });

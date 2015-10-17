@@ -47,7 +47,7 @@ Exercise06_JS_Library
   EFFECTS
     1. Html Element: id=btnHide Effect: Hides this button from the screen, then shows it again
     2. Html Element: id=btnSlide  Effect: Hides button from screen with slide effect
-    3. Html Element: id=btnToggle Effect: Toggles the visibiliy of the first two buttons
+    3. Html Element: id=btnToggle Effect: Toggles the visibility of the first two buttons
     4. Html Element: id=btnFade Effect: Fades this button out and back into visibility
     5. Html Element: id=btnAnimate Effect: Animates this button by making it taller, wider, then shrinking it back again
 
