@@ -126,7 +126,6 @@ function createTable(library){
 		}
 	}
 
-
 	//append the body to the whole table
 	mytable.append(mytablebody);
 
@@ -163,9 +162,6 @@ $(document).ready(function() {
 		var newBook = new Book("Book " + i,"Book " + i+" Description",1);
 		newBook.addBookTo(library.shelves[0]);
 	}
-	//alert(library.shelves.[0].books[0].bookName + library.shelves.[0].books[1].bookName + library.shelves.[0].books[2].bookName);
-	//alert(library.shelves[0].books[0].bookName);
-
 
 	//shelf 1
 	for(;i<6;i++){
@@ -180,18 +176,28 @@ $(document).ready(function() {
 	}
 
 	//add an unavailable book
-	var newBook = new Book("Book 10","Book 10 Description",0);
+	var newBook = new Book("Book 10","Book 10 Description",1);
 	newBook.addBookTo(library.shelves[2]);
 
-	var newBook = new Book("Book 11","Book 11 Description",1);
+	var newBook = new Book("Book 11111","Book 11 Description",0);
+	newBook.addBookTo(library.shelves[2]);
+
+	var newBook = new Book("Book 11","DIFERENT BOOK 11",1);
 	newBook.addBookTo(library.shelves[2]);
 
 	//create the table from the library and display
 	createTable(library).insertBefore($('#libraryTable'));
-});
 
-$(document).on('click', 'td', function () {
-		var string = $(this).html();
-		//var desc = $(this).getElementById("myTd");
-    alert(string);
+	$(document).on('click', 'td', function () {
+			//get variables
+			var string = $(this).html();
+			var column = this.cellIndex;
+			var row = this.parentNode.rowIndex - 1;
+
+			//show user the book details if the book has a name
+			if(row>=0 && col>=0 && string!=" "){
+				alert(library.shelves[column].books[row].details);
+			}
+	});
+
 });
