@@ -2,6 +2,18 @@
 function Library(name){
 	this.libraryName = name;
 	this.shelves = [];
+
+	this.removeUnavailable = function(){
+	//loop through shelves
+	for(var shlf=0;shlf<this.shelves.length;shlf++){
+		//loop through books
+		for(var bk=0;bk<this.shelves[shlf].books.length;bk++){
+			if(this.shelves[shlf].books[bk].available!=1){
+				this.shelves[shlf].books.splice(bk,1);
+			}
+		}
+	}
+}
 }
 
 //creates the shelf object
@@ -33,6 +45,19 @@ Library.prototype.getShelvesList = function(){
 	//return as an array of shelves
 	return shelvesList;
 }
+
+//remove all unavailable books from the library
+/*Library.prototype.removeUnavailable = function(){
+	//loop through shelves
+	for(var shlf=0;shlf<this.shelves.length;shlf++){
+		//loop through books
+		for(var bk=0;bk<this.shelves[shlf].books.length;bk++){
+			if(this.shelves[shlf].books[bk].available!=1){
+				this.shelves[shlf].books.splice(bk,1);
+			}
+		}
+	}
+}*/
 
 //adds the given shelf to the library
 Shelf.prototype.addShelfTo = function(library){
@@ -107,13 +132,12 @@ function createTable(library){
 
 		//for each shelf
 		for(col=0;col<library.shelves.length;col++){
-
-
 			//if the shelf has a book at that spot
 			if((row<library.shelves[col].books.length) && (library.shelves[col].books[row].available==1)){
 				//make a new data col
 				curr_cell = $("<td id=\""+library.shelves[col].books[row].bookName+"\"></td>");
 				curr_text = library.shelves[col].books[row].bookName;
+
 			}
 			else{
 				//make a new data col
@@ -182,8 +206,18 @@ $(document).ready(function() {
 	var newBook = new Book("Book 11111","Book 11 Description",0);
 	newBook.addBookTo(library.shelves[2]);
 
-	var newBook = new Book("Book 11","DIFERENT BOOK 11",1);
+	var newBook = new Book("Book 11 D","DIFERENT BOOK 11",1);
 	newBook.addBookTo(library.shelves[2]);
+
+	//clones the library
+	var libAvailable = library.create();
+	//var libAvailable = JSON.parse(JSON.stringify(library));;
+	//var libAvailable = new Library();
+	//var libAvailable = jQuery.extend(false, {}, library);
+	//var libAvailable = library.constructor();
+
+	//libAvailable.shelves[2].books.splice(4,1);
+	libAvailable.removeUnavailable();
 
 	//create the table from the library and display
 	createTable(library).insertBefore($('#libraryTable'));
@@ -196,7 +230,7 @@ $(document).ready(function() {
 
 			//show user the book details if the book has a name
 			if(row>=0 && col>=0 && string!=" "){
-				alert(library.shelves[column].books[row].details);
+				alert(libAvailable.shelves[column].books[row].details);
 			}
 	});
 
