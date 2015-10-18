@@ -28,7 +28,6 @@ Exercise06_JS_Library
 
   EX 03 jquery
 
-
   EX 03 jquery2
 
   EX 03 jquery3
@@ -60,3 +59,58 @@ Exercise06_JS_Library
       can test this by tabbing the focus through all the buttons
 
 03_Library
+  When making the library, we decided to have three different objects.  Their structures are listed below:
+  //creates the library object
+  function Library(name){
+  	this.libraryName = name;
+  	this.shelves = [];
+  }
+
+  //creates the shelf object
+  function Shelf(name){
+  	this.shelfName = name;
+  	this.books = [];
+  }
+
+  //creates the book object
+  function Book(name, details, available){
+  	this.bookName = name;
+  	this.details = details;
+  	this.available = available;
+  }
+
+  The library would store an array of shelves, and each shelf would store an array of books.  These could
+  then be added-to or removed-from as needed.  To keep track of what books were available, each book had
+  an "available" variable, that either contained a 1 (for available), or a 0 (for unavailable).  This variable
+  can be updated so a user can know if a book is available or not.
+
+  We used the constructor-prototype pattern for each function declaration.  Each function declaration and its
+  description is below:
+  //get list of shelves in the library
+  Library.prototype.getShelvesList = function()
+
+  //adds the given shelf to the library
+  Shelf.prototype.addShelfTo = function(library)
+
+  //adds the given book to the shelf
+  Book.prototype.addBookTo = function(shelf)
+
+  //if this book is available return the shelf it is in, else return "unavailable"
+  Book.prototype.isAvailableIn = function(library)
+
+  **General functionality**
+  When the document is loaded, then the page populates a library object with a
+  set amount of shelves and books in those shelves.  Some of the shelves have
+  books that are not available and unavailable.  From there, a table is generated
+  using a library object that only contains the available books and is displayed
+  to the user.  When the user clicks on a cell, it displays the name of the book
+  and its details in an alert window.
+
+  Below the table of available books is a search window to check availability for
+  a book.  If a book is unavailable in the library (Book 12) or non-existant in
+  the library, then the display window will say the the book is unavailable.  If
+  the book is available, it will say that the book is available and what shelf it
+  is located in.
+
+  Below the check availability option, is a display shelves button.  Clicking this
+  button will list all of the shelves in the library to the user.

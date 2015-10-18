@@ -132,11 +132,6 @@ function createTable(library){
 	return mytable;
 }
 
-$("#genLibTable").on("click", "td", function() {
-    //Do stuff
-		alert("CLICKED!");
-});
-
 //when the document is ready, basically the main function
 $(document).ready(function() {
 	//variables
@@ -182,6 +177,9 @@ $(document).ready(function() {
 
 	var newBook = new Book("Book 11","DIFERENT BOOK 11",1);
 	newBook.addBookTo(library.shelves[2]);
+
+	var newBook = new Book("Book 12","DIFERENT BOOK 12",0);
+	newBook.addBookTo(library.shelves[1]);
 
 	//clones the library
 	var libAvailable = JSON.parse(JSON.stringify(library));
